@@ -1,4 +1,4 @@
-package com.example.ProductService.DTO;
+package com.example.ProductService.DTO.Product;
 
 import com.example.ProductService.Models.Category;
 import com.example.ProductService.Models.Product;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProductRequestDto {
+public class CreateProductRequestDto {
     private String title;
     private String description;
     private Double price;

@@ -1,7 +1,6 @@
-package com.example.ProductService.DTO;
+package com.example.ProductService.DTO.Product;
 
 import com.example.ProductService.Models.Product;
-import jakarta.persistence.GeneratedValue;
 import lombok.Getter;
 import lombok.Setter;
 
