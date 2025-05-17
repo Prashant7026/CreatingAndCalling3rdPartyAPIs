@@ -1,19 +1,26 @@
 package com.example.ProductService.Service;
 
+import com.example.ProductService.Exception.ProductNotFoundException;
+import com.example.ProductService.Models.Category;
 import com.example.ProductService.Models.Product;
 import com.example.ProductService.Repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProductService {
+    @Autowired
     private ProductRepository productRepository;
-
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    @Autowired
+    private CategoryService categoryService;
 
     public Product createProduct(Product product) {
+        Category categoryToPutInProduct = this.categoryToPutInProduct(product);
+        product.setCategory(categoryToPutInProduct);
+
         return productRepository.save(product);
     }
 
