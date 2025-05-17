@@ -2,7 +2,7 @@ package com.example.ProductService.Controller;
 
 import com.example.ProductService.DTO.Product.*;
 import com.example.ProductService.Models.Product;
-import com.example.ProductService.Service.ProductService;
+import com.example.ProductService.Service.ProductServiceDBImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +14,11 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    private ProductService productService;
+    private ProductServiceDBImp productServiceDBImp;
 
     @PostMapping("")
     public CreateProductResponseDto createProduct(@RequestBody CreateProductRequestDto productRequestDto) {
-        Product product = productService.createProduct(productRequestDto.toProduct());
+        Product product = productServiceDBImp.createProduct(productRequestDto.toProduct());
         return CreateProductResponseDto.fromProduct(product);
     }
 
@@ -26,7 +26,7 @@ public class ProductController {
     public List<CreateProductResponseDto> getAllProduct() {
         List<CreateProductResponseDto> responseProductDto = new ArrayList<>();
 
-        List<Product> products = productService.findAll();
+        List<Product> products = productServiceDBImp.findAll();
         for (Product product : products) {
             responseProductDto.add(CreateProductResponseDto.fromProduct(product));
         }
@@ -34,7 +34,7 @@ public class ProductController {
     }
     @PatchMapping("/{id}")
     public PatchProductResponseDto updateProduct(@PathVariable("id") Long id, @RequestBody CreateProductDto createProductDto) {
-        Product product = productService.partialUpdate(id, createProductDto.toProduct());
+        Product product = productServiceDBImp.partialUpdate(id, createProductDto.toProduct());
         PatchProductResponseDto responseDto = new PatchProductResponseDto();
         responseDto.setProduct(GetProductDto.from(product));
 
