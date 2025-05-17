@@ -32,6 +32,14 @@ public class ProductController {
         }
         return responseProductDto;
     }
+    @PatchMapping("/{id}")
+    public PatchProductResponseDto updateProduct(@PathVariable("id") Long id, @RequestBody CreateProductDto createProductDto) {
+        Product product = productService.partialUpdate(id, createProductDto.toProduct());
+        PatchProductResponseDto responseDto = new PatchProductResponseDto();
+        responseDto.setProduct(GetProductDto.from(product));
+
+        return responseDto;
+    }
     @RequestMapping(name = "NAMAN", value = "/products")
     public String namanMethod() {
         return "Magic";
