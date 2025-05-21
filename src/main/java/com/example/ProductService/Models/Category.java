@@ -20,6 +20,9 @@ public class Category extends BaseModel {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
     @JsonIgnore
     private List<Product> allProducts;
+
+    @Column(name = "count_of_products")
+    private int countOfProducts;
 }
 
 /*
