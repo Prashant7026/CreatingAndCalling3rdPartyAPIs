@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @Entity
 public class Category extends BaseModel {
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, name = "category_Name")
     private String name;        // it's not null & unique in table
     @Basic(fetch = FetchType.LAZY)
     private String description;

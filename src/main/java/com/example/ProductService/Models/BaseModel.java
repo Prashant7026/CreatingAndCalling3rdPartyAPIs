@@ -11,7 +11,7 @@ import java.util.Date;
 @MappedSuperclass
 public class BaseModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)     // Now spring boot will tell to db to generate id automatically
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     // Now spring boot will tell to db to generate id automatically
     private Long id;
     private Date createdAt;
     private Date updatedAt;
