@@ -32,6 +32,17 @@ public class ProductController {
         }
         return responseProductDto;
     }
+
+//    @GetMapping("/{id}")
+//    public String getSingleProduct(@PathVariable("id") int id) {
+//        return null;
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public void deleteProduct(@PathVariable("id") int id) {
+//
+//    }
+//
     @PatchMapping("/{id}")
     public PatchProductResponseDto updateProduct(@PathVariable("id") Long id, @RequestBody CreateProductDto createProductDto) {
         Product product = productServiceDBImp.partialUpdate(id, createProductDto.toProduct());
@@ -40,9 +51,17 @@ public class ProductController {
 
         return responseDto;
     }
+//
+//    @PutMapping("")
+//    public void replaceProduct() {
+//
+//    }
+
+    /*
     @RequestMapping(name = "NAMAN", value = "/products")
     public String namanMethod() {
         return "Magic";
     }
+     */
 
 }
